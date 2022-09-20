@@ -1,4 +1,4 @@
-module github.com/BanchAAl/L2/tree/main/develop/dev01/ntptime
+module github.com/BanchAAl/L2/develop/dev01/ntptime
 
 go 1.18
 

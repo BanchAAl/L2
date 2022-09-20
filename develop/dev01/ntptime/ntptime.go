@@ -1,19 +1,20 @@
 package ntptime
 
 import (
-	"github.com/beevik/ntp"
 	"time"
+
+	"github.com/beevik/ntp"
 )
 
-type TimeNtp struct {
+type NtpTime struct {
 	ntpServer string
 	timeout   time.Duration
 }
 
-func (t TimeNtp) CurrentTime() (time.Time, error) {
+func (t NtpTime) CurrentTime() (time.Time, error) {
 	return ntp.Time(t.ntpServer)
 }
 
-func NewTimeLib(ntpServer string, timeout time.Duration) *TimeNtp {
-	return &TimeNtp{ntpServer, timeout}
+func NewNtpTime(ntpServer string, timeout time.Duration) *NtpTime {
+	return &NtpTime{ntpServer, timeout}
 }
