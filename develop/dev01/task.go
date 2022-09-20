@@ -1,5 +1,12 @@
 package main
 
+import (
+	"fmt"
+	"github.com/BanchAAl/L2/develop/dev01/ntptime"
+	"os"
+	"time"
+)
+
 /*
 === Базовая задача ===
 
@@ -13,5 +20,18 @@ package main
 */
 
 func main() {
+	ntp := ntptime.NewNtpTime("ntp1.stratum2.ru", 60*time.Minute)
+	if ntp == nil {
+		fmt.Printf("Error create ntp")
+		os.Exit(1)
+	}
 
+	time, err := ntp.CurrentTime()
+
+	if err != nil {
+		fmt.Printf("Error get current time: %s", err.Error())
+		os.Exit(1)
+	}
+
+	fmt.Printf("Current time: %s", time.String())
 }
